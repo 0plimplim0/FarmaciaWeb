@@ -149,18 +149,18 @@
   </footer>
 
   <script>
-  const carrusel = document.querySelector('.carrusel');
-  const btnIzq = document.querySelector('.flecha.izq');
-  const btnDer = document.querySelector('.flecha.der');
+    const carrusel = document.querySelector('.carrusel');
+    const btnIzq = document.querySelector('.flecha.izq');
+    const btnDer = document.querySelector('.flecha.der');
 
-  btnIzq.addEventListener('click', () => {
-    carrusel.scrollBy({ left: -200, behavior: 'smooth' });
-  });
+    btnIzq.addEventListener('click', () => {
+      carrusel.scrollBy({ left: -200, behavior: 'smooth' });
+    });
 
-  btnDer.addEventListener('click', () => {
-    carrusel.scrollBy({ left: 200, behavior: 'smooth' });
-  });
-</script>
+    btnDer.addEventListener('click', () => {
+      carrusel.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  </script>
 
 </body>
 </html>

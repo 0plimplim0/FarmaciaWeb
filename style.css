@@ -71,7 +71,6 @@ body {
   border-radius: 5px;
 }
 
-/* Nuevo: contenedor del carrusel */
 .carrusel-container {
   display: flex;
   align-items: center;
@@ -79,10 +78,10 @@ body {
   gap: 10px;
   overflow: hidden;
   position: relative;
-  margin: 0 20px;
+  width: calc((140px + 10px) * 7); /* 4 cards de 140px + 20px de gap */
+  margin: 0 auto;
 }
 
-/* Nuevo: tira deslizable de tarjetas */
 .carrusel {
   display: flex;
   gap: 20px;
@@ -91,11 +90,12 @@ body {
   padding: 10px;
 }
 
+
 /* Tarjetas */
 .card {
   border: 1px solid #ccc;
   padding: 15px;
-  margin: 3%;
+  margin: 20px;
   width: 140px;
   border-radius: 15px;
   text-align: center;
