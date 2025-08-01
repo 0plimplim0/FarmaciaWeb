@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Productos - Farmaclas Acceso Vital</title>
+    <link rel="stylesheet" href="./style/inicio.css" />
+    <style>
+      /* Estilos adicionales para esta página */
+      html, body {
+        height: 100;
+        margin: 0;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .Titulo {
+        width: 100%;
+        background-color: #235099;
+      }
+      
+      .productos-section {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 40px 20px;
+        gap: 30px;
+        justify-content: center;
+      }
+
+      .filtros {
+        width: 250px;
+        background-color: #f6f6f6;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      }
+
+      .filtros h3 {
+        margin-top: 0;
+        font-size: 20px;
+        color: #173668;
+      }
+
+      .filtros label {
+        display: block;
+        margin: 8px 0;
+      }
+
+      .grid-productos {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 100px;
+      }
+
+      .producto {
+        background-color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* cambia de space-between a flex-start */
+        height: 100%; /* opcional, solo si notas que se encogen mucho */
+      }
+
+
+      .producto img {
+        height: 100px;
+        object-fit: contain;
+        margin-bottom: 10px;
+      }
+
+      .producto button {
+        margin-top: auto;
+        background-color: #173668;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 768px) {
+        .productos-section {
+          flex-direction: column;
+          gap: 20px; /* opcional, da un espacio entre filtros y productos */
+        }
+
+        .filtros {
+          width: 100%;
+        }
+
+        .grid-productos {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 30px;
+          align-items: start;
+        }
+
+        .producto {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          height: 50%;
+        }
+
+        .producto img {
+          height: 50%;
+          object-fit: contain;
+        }
+
+        .producto p {
+          font-size: 150%;
+        }
+
+        .producto button {
+          background-color: #173668;
+          color: white;
+          border: none;
+          padding: 8px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="nav_bar">
+      <a href="index.html">
+        <img class="logo" src="./img/logo.png" alt="Logo">
+      </a>
+      <button class="hamburguesa" aria-label="Menú">&#9776;</button>
+      <div class="nav_links">
+        <span><img src="./img/mapa.png" alt="Ubicación" class="icono-ubicacion"> Sucursal</span>
+        <a href="productos.html">PRODUCTOS</a>
+        <a href="nosotros.html">SOBRE NOSOTROS</a>
+        <a href="carrito.html"><img src="./img/carrito-de-compras.png" class="carrito-img" alt="Carrito"></a>
+      </div>
+    </header>
+
+    <!-- Título -->
+    <section style="text-align:center; padding: 30px 0;" class="Titulo">
+      <h1 style="font-size: 36px; color: #ffffff;">PRODUCTOS</h1>
+    </section>
+
+    <!-- Sección Productos -->
+    <section class="productos-section">
+      <!-- Filtros -->
+      <aside class="filtros">
+        <h3>Filtrar por</h3>
+        <strong>Categoría</strong>
+        <label><input type="checkbox" /> Vitaminas y minerales</label>
+        <label><input type="checkbox" /> Cuidado personal</label>
+        <label><input type="checkbox" /> Herbarios</label>
+        <label><input type="checkbox" /> Rebajas</label>
+        <br>
+        <strong>Precio</strong>
+        <label><input type="checkbox" /> Hasta $50</label>
+        <label><input type="checkbox" /> $30 - $100</label>
+      </aside>
+
+      <!-- Lista de productos -->
+      <div class="grid-productos">
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Vitaminas">
+          <p>Vitaminas</p>
+          <p>$150.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Multivitaminico">
+          <p>Multivitaminico</p>
+          <p>$30.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Herbario">
+          <p>HERBARIO</p>
+          <p>$60.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Herbario">
+          <p>HERBARIO</p>
+          <p>$120.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Vitaminas">
+          <p>Vitaminas</p>
+          <p>$140.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Multivitaminico">
+          <p>Multivitaminico</p>
+          <p>$80.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Herbario">
+          <p>HERBARIO</p>
+          <p>$120.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Vitaminas">
+          <p>Vitaminas</p>
+          <p>$140.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Multivitaminico">
+          <p>Multivitaminico</p>
+          <p>$80.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Herbario">
+          <p>HERBARIO</p>
+          <p>$120.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Vitaminas">
+          <p>Vitaminas</p>
+          <p>$140.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Multivitaminico">
+          <p>Multivitaminico</p>
+          <p>$80.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Herbario">
+          <p>HERBARIO</p>
+          <p>$120.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Vitaminas">
+          <p>Vitaminas</p>
+          <p>$140.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Multivitaminico">
+          <p>Multivitaminico</p>
+          <p>$80.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Herbario">
+          <p>HERBARIO</p>
+          <p>$120.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Vitaminas">
+          <p>Vitaminas</p>
+          <p>$140.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Multivitaminico">
+          <p>Multivitaminico</p>
+          <p>$80.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Herbario">
+          <p>HERBARIO</p>
+          <p>$120.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Vitaminas">
+          <p>Vitaminas</p>
+          <p>$140.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="./img/medicina.png" alt="Multivitaminico">
+          <p>Multivitaminico</p>
+          <p>$80.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-contacto">
+        <p>📞 11 2233 4455</p>
+        <p>✉️ contacto@accesovital.mx</p>
+      </div>
+      <div class="footer-social">
+        <p>Redes sociales</p>
+        <a href="#"><img src="./img/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="./img/facebook.png" alt="Facebook"></a>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+      // Menú hamburguesa
+      const btnHamburguesa = document.querySelector('.hamburguesa');
+      const navLinks = document.querySelector('.nav_links');
+      btnHamburguesa.addEventListener('click', () => {
+        navLinks.classList.toggle('mostrar');
+      });
+    </script>
+  </body>
+</html>
