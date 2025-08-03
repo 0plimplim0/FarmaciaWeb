@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sobre Nosotros - Farmacias Acceso Vital</title>
+    <link rel="stylesheet" href="./style/inicio.css" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+        .Seccion {
+            padding: 30px
+        }
+        .Titulo{
+            width: 100%;
+            background-color: #235099;
+        }
+    </style>
+  </head>
+  <body>
+    <header class="nav_bar">
+      <a href="index.html">
+        <img class="logo" src="./img/logo.png" alt="Logo">
+      </a>
+
+      <button class="hamburguesa" aria-label="Menú">
+        &#9776;
+      </button>
+
+      <div class="nav_links">
+        <span><img src="./img/mapa.png" alt="Ubicación" class="icono-ubicacion"> Sucursal</span>
+        <a href="productos.html">PRODUCTOS</a>
+        <a href="nosotros.html">SOBRE NOSOTROS</a>
+        <a href="carrito.html"><img src="./img/carrito-de-compras.png" class="carrito-img" alt="Carrito"></a>
+      </div>
+    </header>
+
+    <section style="text-align:center; padding: 30px 0;" class="Titulo">
+      <h1 style="font-size: 36px; color: #ffffff;">SOBRE NOSOTROS</h1>
+    </section>
+
+    <main style="padding: 30px;">
+      <p><strong>Farmacias Acceso Vital</strong> es una empresa comprometida con la salud y bienestar de tu familia. Nos especializamos en ofrecer medicamentos, suplementos y productos de cuidado personal a precios accesibles.</p>
+
+      <div class="Seccion">
+        <h2>📍 Sucursales</h2>
+        <p><strong>Sucursal Centro:</strong> Calle Independencia #123, Centro, CDMX<br>
+                ⏰ Lunes a sábado: 8:00 AM - 8:00 PM<br></p>
+        <p><strong>Sucursal Norte:</strong> Avenida Revolución #456, Gustavo A. Madero, CDMX<br>
+                ⏰ Lunes a viernes: 9:00 AM - 7:00 PM | Sábados: 9:00 AM - 2:00 PM</p>
+      </div>
+
+      <div class="Seccion">
+        <h2>📞 Contacto</h2>
+        <p>Teléfono: 11 2233 4455</p>
+        <p>Correo electrónico: <a href="mailto:contacto@accesovital.mx">contacto@accesovital.mx</a></p>
+        <p>Instagram: <a href="#">@accesovital</a></p>
+        <p>Facebook: <a href="#">Farmacias Acceso Vital</a></p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-contacto">
+        <p>📞 11 2233 4455</p>
+        <p>✉️ contacto@accesovital.mx</p>
+      </div>
+      <div class="footer-social">
+        <p>Redes sociales</p>
+        <a href="#"><img src="./img/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="./img/facebook.png" alt="Facebook"></a>
+      </div>
+    </footer>
+    
+    <script>
+      const btnHamburguesa = document.querySelector('.hamburguesa');
+      const navLinks = document.querySelector('.nav_links');
+
+      btnHamburguesa.addEventListener('click', () => {
+        navLinks.classList.toggle('mostrar');
+      });
+    </script>
+  </body>
+</html>
