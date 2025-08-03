@@ -169,6 +169,13 @@
     </footer>
 
     <script>
+      const btnHamburguesa = document.querySelector('.hamburguesa');
+      const navLinks = document.querySelector('.nav_links');
+
+      btnHamburguesa.addEventListener('click', () => {
+        navLinks.classList.toggle('mostrar');
+      });
+
       const productos = [
         { nombre: "Vitaminas", precio: 150, categoria: "vitaminas" },
         { nombre: "Multivitaminico", precio: 30, categoria: "vitaminas" },
