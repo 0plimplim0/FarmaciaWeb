@@ -39,7 +39,7 @@ function mostrarProductos(lista) {
     const div = document.createElement('div');
     div.className = 'producto';
     div.innerHTML = `
-      <img src="./img/medicina.png" alt="${p.nombre}">
+      <img src="${p.imagen}" alt="${p.nombre}">
       <p>${p.nombre}</p>
       <p>$${p.precio}</p>
       <button class="agregar-carrito" data-nombre="${p.nombre}" data-precio="${p.precio}">Agregar al carrito</button>
