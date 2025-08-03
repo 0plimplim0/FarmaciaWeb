@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Carrito - Farmacias Acceso Vital</title>
+    <link rel="stylesheet" href="./style/inicio.css" />
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+        padding: 30px;
+      }
+
+      #mensaje-vacio {
+        display: none;
+        text-align: center;
+        color: #999;
+        font-size: 20px;
+        padding: 50px;
+        border: 2px dashed #ccc;
+        border-radius: 15px;
+        background-color: #f9f9f9;
+        margin: 30px auto;
+        max-width: 400px;
+      }
+
+      .Titulo {
+        width: 100%;
+        background-color: #235099;
+        text-align: center;
+        padding: 30px 0;
+      }
+
+      .Titulo h1 {
+        font-size: 36px;
+        color: white;
+      }
+
+      .producto {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        padding: 15px 0;
+        flex-wrap: wrap;
+      }
+
+      .producto img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+
+      .producto-info {
+        flex-grow: 1;
+        margin-left: 20px;
+      }
+
+      .acciones {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .acciones button {
+        padding: 5px 10px;
+        background-color: #173668;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .acciones button:hover {
+        background-color: #0e2a4c;
+      }
+
+      .cotizar-btn {
+        background-color: #25D366;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cotizar-btn:hover {
+        background-color: #1ebe5d;
+      }
+
+      .total {
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav_bar">
+      <a href="index.html">
+        <img class="logo" src="./img/logo.png" alt="Logo">
+      </a>
+
+      <button class="hamburguesa" aria-label="Menú">
+        &#9776;
+      </button>
+
+      <div class="nav_links">
+        <a href="productos.html">PRODUCTOS</a>
+        <a href="nosotros.html">SOBRE NOSOTROS</a>
+        <a href="carrito.html"><img src="./img/carrito-de-compras.png" class="carrito-img" alt="Carrito"></a>
+      </div>
+    </header>
+
+    <section class="Titulo">
+      <h1>MI CARRITO</h1>
+    </section>
+
+    <main>
+        <div id="contenedor-carrito"></div>
+        <p id="mensaje-vacio" style="display: none; text-align: center; color: gray; font-size: 18px;">
+          🛒 Tu carrito está vacío.
+        </p>
+        <p class="total">Total estimado: $0</p>
+
+        <a class="cotizar-btn" href="#" id="btnCotizar">
+          Cotizar por WhatsApp
+        </a>
+    </main>
+
+    <footer>
+      <div class="footer-contacto">
+        <p>📞 11 2233 4455</p>
+        <p>✉️ contacto@accesovital.mx</p>
+      </div>
+      <div class="footer-social">
+        <p>Redes sociales</p>
+        <a href="#"><img src="./img/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="./img/facebook.png" alt="Facebook"></a>
+      </div>
+    </footer>
+
+    <script>
+        const btnHamburguesa = document.querySelector('.hamburguesa');
+        const navLinks = document.querySelector('.nav_links');
+
+        btnHamburguesa.addEventListener('click', () => {
+            navLinks.classList.toggle('mostrar');
+        });
+
+        const carritoKey = 'carrito';
+        const contenedor = document.getElementById('contenedor-carrito');
+
+        function cargarCarrito() {
+            const datos = JSON.parse(localStorage.getItem(carritoKey)) || [];
+            contenedor.innerHTML = '';
+            datos.forEach(p => agregarProductoAlDOM(p));
+            actualizarTotal();
+        }
+
+        function guardarCarrito() {
+            const productos = [];
+            document.querySelectorAll('.producto').forEach(p => {
+            const nombre = p.querySelector('.producto-info p strong').textContent;
+            const precio = parseInt(p.getAttribute('data-precio'));
+            const cantidad = parseInt(p.querySelector('.cantidad').textContent);
+            productos.push({ nombre, precio, cantidad });
+            });
+            localStorage.setItem(carritoKey, JSON.stringify(productos));
+        }
+
+        function agregarProductoAlDOM({ nombre, precio, cantidad }) {
+            const div = document.createElement('div');
+            div.className = 'producto';
+            div.setAttribute('data-precio', precio);
+            div.innerHTML = `
+            <img src="./img/medicina.png" alt="Producto">
+            <div class="producto-info">
+                <p><strong>${nombre}</strong></p>
+                <p>$${precio}</p>
+            </div>
+            <div class="acciones">
+                <button onclick="cambiarCantidad(this, -1)">-</button>
+                <span class="cantidad">${cantidad}</span>
+                <button onclick="cambiarCantidad(this, 1)">+</button>
+                <button onclick="eliminarProducto(this)">Eliminar</button>
+            </div>
+            `;
+            contenedor.appendChild(div);
+        }
+
+        function cambiarCantidad(btn, cambio) {
+            const cantidadSpan = btn.parentElement.querySelector('.cantidad');
+            let cantidad = parseInt(cantidadSpan.textContent);
+            cantidad = Math.max(1, cantidad + cambio);
+            cantidadSpan.textContent = cantidad;
+            actualizarTotal();
+            guardarCarrito();
+        }
+
+        function eliminarProducto(btn) {
+            const producto = btn.closest('.producto');
+            producto.remove();
+            actualizarTotal();
+            guardarCarrito();
+        }
+
+        function actualizarTotal() {
+          const productos = document.querySelectorAll('.producto');
+          let total = 0;
+          productos.forEach(p => {
+            const precio = parseInt(p.getAttribute('data-precio'));
+            const cantidad = parseInt(p.querySelector('.cantidad').textContent);
+            total += precio * cantidad;
+          });
+          document.querySelector('.total').textContent = `Total estimado: $${total}`;
+          
+          // Mostrar u ocultar mensaje vacío
+          const mensaje = document.getElementById('mensaje-vacio');
+          mensaje.style.display = productos.length === 0 ? 'block' : 'none';
+        }
+
+        document.getElementById('btnCotizar').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const productos = document.querySelectorAll('.producto');
+            if (productos.length === 0) return alert("Tu carrito está vacío.");
+
+            let mensaje = "Hola, quiero cotizar los productos de mi carrito:%0A";
+            let total = 0;
+
+            productos.forEach(p => {
+            const nombre = p.querySelector('.producto-info p strong').textContent;
+            const precio = parseInt(p.getAttribute('data-precio'));
+            const cantidad = parseInt(p.querySelector('.cantidad').textContent);
+            total += precio * cantidad;
+            mensaje += `- ${cantidad}x ${nombre} ($${precio})%0A`;
+            });
+
+            mensaje += `%0ATotal estimado: $${total}`;
+            const numero = "5211122334455";
+            const url = `https://wa.me/${numero}?text=${mensaje}`;
+            window.open(url, '_blank');
+        });
+
+        // Cargar productos al abrir la página
+        window.addEventListener('DOMContentLoaded', cargarCarrito);
+    </script>
+  </body>
+</html>

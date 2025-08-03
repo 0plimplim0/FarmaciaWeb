@@ -1,26 +1,33 @@
+<!-- Código transformado de productos.html con buscador y filtros funcionales -->
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Productos - Farmaclas Acceso Vital</title>
+    <title>Productos - Farmacias Acceso Vital</title>
     <link rel="stylesheet" href="./style/inicio.css" />
     <style>
-      /* Estilos adicionales para esta página */
       html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0px;
-        display: flex;
-        flex-direction: column;
-        overflow-x: hidden;
-      }
-      
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > section.productos-section {
+      flex: 1;
+    }
+
+    footer {
+      margin-top: auto;
+    }
+
+
       .Titulo {
         width: 100%;
         background-color: #235099;
       }
-      
+
       .productos-section {
         display: flex;
         flex-wrap: wrap;
@@ -33,8 +40,17 @@
         width: 250px;
         background-color: #f6f6f6;
         padding: 20px;
+        padding-right: 25px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      }
+
+      .filtros input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
       }
 
       .filtros h3 {
@@ -65,8 +81,8 @@
         flex-direction: column;
         justify-content: flex-start;
         height: 100%;
+        max-height: 304px;
       }
-
 
       .producto img {
         height: 100px;
@@ -100,33 +116,7 @@
           padding: 0 16px;
           align-items: start;
         }
-
-        .producto {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          height: 100%;
-        }
-
-        .producto img {
-          min-height: auto;
-          object-fit: contain;
-        }
-
-        .producto p {
-          font-size: 150%;
-        }
-
-        .producto button {
-          background-color: #173668;
-          color: white;
-          border: none;
-          padding: 8px;
-          border-radius: 5px;
-          cursor: pointer;
-        }
       }
-
     </style>
   </head>
   <body>
@@ -137,7 +127,6 @@
       </a>
       <button class="hamburguesa" aria-label="Menú">&#9776;</button>
       <div class="nav_links">
-        <span><img src="./img/mapa.png" alt="Ubicación" class="icono-ubicacion"> Sucursal</span>
         <a href="productos.html">PRODUCTOS</a>
         <a href="nosotros.html">SOBRE NOSOTROS</a>
         <a href="carrito.html"><img src="./img/carrito-de-compras.png" class="carrito-img" alt="Carrito"></a>
@@ -153,87 +142,17 @@
     <section class="productos-section">
       <!-- Filtros -->
       <aside class="filtros">
+        <input type="text" id="buscador" placeholder="Buscar producto...">
         <h3>Filtrar por</h3>
         <strong>Categoría</strong>
-        <label><input type="checkbox" /> Vitaminas y minerales</label>
-        <label><input type="checkbox" /> Cuidado personal</label>
-        <label><input type="checkbox" /> Herbarios</label>
-        <label><input type="checkbox" /> Rebajas</label>
-        <br>
-        <strong>Precio</strong>
-        <label><input type="checkbox" /> Hasta $50</label>
-        <label><input type="checkbox" /> $30 - $100</label>
+        <label><input type="checkbox" name="categoria" value="vitaminas" /> Vitaminas y minerales</label>
+        <label><input type="checkbox" name="categoria" value="cuidado" /> Cuidado personal</label>
+        <label><input type="checkbox" name="categoria" value="herbario" /> Herbarios</label>
+        <label><input type="checkbox" name="categoria" value="rebaja" /> Rebajas</label>
       </aside>
 
       <!-- Lista de productos -->
-      <div class="grid-productos">
-        <div class="producto">
-            <img src="./img/medicina.png" alt="Vitaminas">
-            <p>Vitaminas</p>
-            <p>$150.00</p>
-            <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Multivitaminico">
-          <p>Multivitaminico</p>
-          <p>$30.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$60.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="./img/medicina.png" alt="Herbario">
-          <p>HERBARIO</p>
-          <p>$120.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-      </div>
+      <div class="grid-productos" id="contenedor-productos"></div>
     </section>
 
     <!-- Footer -->
@@ -249,14 +168,87 @@
       </div>
     </footer>
 
-    <!-- JS -->
     <script>
-      // Menú hamburguesa
-      const btnHamburguesa = document.querySelector('.hamburguesa');
-      const navLinks = document.querySelector('.nav_links');
-      btnHamburguesa.addEventListener('click', () => {
-        navLinks.classList.toggle('mostrar');
+      const productos = [
+        { nombre: "Vitaminas", precio: 150, categoria: "vitaminas" },
+        { nombre: "Multivitaminico", precio: 30, categoria: "vitaminas" },
+        { nombre: "Jabón corporal", precio: 45, categoria: "cuidado" },
+        { nombre: "Herbario Natural", precio: 120, categoria: "herbario" },
+        { nombre: "Crema facial", precio: 80, categoria: "cuidado" },
+        { nombre: "Infusión relajante", precio: 60, categoria: "herbario" },
+        { nombre: "Colageno en polvo", precio: 99, categoria: "vitaminas" },
+        { nombre: "Aceite esencial", precio: 55, categoria: "rebaja" }
+      ];
+
+      const contenedor = document.getElementById('contenedor-productos');
+      const buscador = document.getElementById('buscador');
+
+      document.querySelectorAll('input[name="categoria"]').forEach(cb => {
+        cb.addEventListener('change', filtrarYMostrar);
       });
+      buscador.addEventListener('input', filtrarYMostrar);
+
+      function filtrarYMostrar() {
+        const seleccionadas = [...document.querySelectorAll('input[name="categoria"]:checked')].map(cb => cb.value);
+        const texto = buscador.value.toLowerCase();
+        const filtrados = productos.filter(p => {
+          const coincideCategoria = seleccionadas.length === 0 || seleccionadas.includes(p.categoria);
+          const coincideBusqueda = p.nombre.toLowerCase().includes(texto);
+          return coincideCategoria && coincideBusqueda;
+        });
+        mostrarProductos(filtrados);
+      }
+
+      function mostrarProductos(lista) {
+        contenedor.innerHTML = '';
+        lista.forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'producto';
+          div.innerHTML = `
+            <img src="./img/medicina.png" alt="${p.nombre}">
+            <p>${p.nombre}</p>
+            <p>$${p.precio}</p>
+            <button class="agregar-carrito" data-nombre="${p.nombre}" data-precio="${p.precio}">Agregar al carrito</button>
+          `;
+          contenedor.appendChild(div);
+        });
+        activarBotones();
+      }
+
+      function activarBotones() {
+        document.querySelectorAll('.agregar-carrito').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const nombre = btn.dataset.nombre;
+            const precio = parseInt(btn.dataset.precio);
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const existente = carrito.find(p => p.nombre === nombre);
+            if (existente) {
+              existente.cantidad += 1;
+            } else {
+              carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarNotificacion(`\"${nombre}\" se agregó al carrito`);
+          });
+        });
+      }
+
+      function mostrarNotificacion(texto) {
+        const noti = document.getElementById('notificacion');
+        noti.textContent = texto;
+        noti.classList.add('mostrar');
+        setTimeout(() => {
+          noti.classList.remove('mostrar');
+          setTimeout(() => noti.style.display = 'none', 300);
+        }, 2000);
+        noti.style.display = 'block';
+      }
+
+      // Inicial
+      mostrarProductos(productos);
     </script>
+
+    <!-- Notificación -->
+    <div id="notificacion" style="display: none;"></div>
   </body>
 </html>
