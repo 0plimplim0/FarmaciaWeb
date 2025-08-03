@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Productos - Farmacias Acceso Vital</title>
-    <link rel="stylesheet" href="./style/inicio.css" />
+    <link rel="stylesheet" href="./style/global.css" />
     <style>
       html, body {
       height: 100%;
@@ -120,7 +120,6 @@
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header class="nav_bar">
       <a href="index.html">
         <img class="logo" src="./img/logo.png" alt="Logo">
@@ -132,15 +131,11 @@
         <a href="carrito.html"><img src="./img/carrito-de-compras.png" class="carrito-img" alt="Carrito"></a>
       </div>
     </header>
-
-    <!-- Título -->
     <section style="text-align:center; padding: 30px 0;" class="Titulo">
       <h1 style="font-size: 36px; color: #ffffff;">PRODUCTOS</h1>
     </section>
 
-    <!-- Sección Productos -->
     <section class="productos-section">
-      <!-- Filtros -->
       <aside class="filtros">
         <input type="text" id="buscador" placeholder="Buscar producto...">
         <h3>Filtrar por</h3>
@@ -150,12 +145,8 @@
         <label><input type="checkbox" name="categoria" value="herbario" /> Herbarios</label>
         <label><input type="checkbox" name="categoria" value="rebaja" /> Rebajas</label>
       </aside>
-
-      <!-- Lista de productos -->
       <div class="grid-productos" id="contenedor-productos"></div>
     </section>
-
-    <!-- Footer -->
     <footer>
       <div class="footer-contacto">
         <p>📞 11 2233 4455</p>
@@ -167,95 +158,7 @@
         <a href="#"><img src="./img/facebook.png" alt="Facebook"></a>
       </div>
     </footer>
-
-    <script>
-      const btnHamburguesa = document.querySelector('.hamburguesa');
-      const navLinks = document.querySelector('.nav_links');
-
-      btnHamburguesa.addEventListener('click', () => {
-        navLinks.classList.toggle('mostrar');
-      });
-
-      const productos = [
-        { nombre: "Vitaminas", precio: 150, categoria: "vitaminas" },
-        { nombre: "Multivitaminico", precio: 30, categoria: "vitaminas" },
-        { nombre: "Jabón corporal", precio: 45, categoria: "cuidado" },
-        { nombre: "Herbario Natural", precio: 120, categoria: "herbario" },
-        { nombre: "Crema facial", precio: 80, categoria: "cuidado" },
-        { nombre: "Infusión relajante", precio: 60, categoria: "herbario" },
-        { nombre: "Colageno en polvo", precio: 99, categoria: "vitaminas" },
-        { nombre: "Aceite esencial", precio: 55, categoria: "rebaja" }
-      ];
-
-      const contenedor = document.getElementById('contenedor-productos');
-      const buscador = document.getElementById('buscador');
-
-      document.querySelectorAll('input[name="categoria"]').forEach(cb => {
-        cb.addEventListener('change', filtrarYMostrar);
-      });
-      buscador.addEventListener('input', filtrarYMostrar);
-
-      function filtrarYMostrar() {
-        const seleccionadas = [...document.querySelectorAll('input[name="categoria"]:checked')].map(cb => cb.value);
-        const texto = buscador.value.toLowerCase();
-        const filtrados = productos.filter(p => {
-          const coincideCategoria = seleccionadas.length === 0 || seleccionadas.includes(p.categoria);
-          const coincideBusqueda = p.nombre.toLowerCase().includes(texto);
-          return coincideCategoria && coincideBusqueda;
-        });
-        mostrarProductos(filtrados);
-      }
-
-      function mostrarProductos(lista) {
-        contenedor.innerHTML = '';
-        lista.forEach(p => {
-          const div = document.createElement('div');
-          div.className = 'producto';
-          div.innerHTML = `
-            <img src="./img/medicina.png" alt="${p.nombre}">
-            <p>${p.nombre}</p>
-            <p>$${p.precio}</p>
-            <button class="agregar-carrito" data-nombre="${p.nombre}" data-precio="${p.precio}">Agregar al carrito</button>
-          `;
-          contenedor.appendChild(div);
-        });
-        activarBotones();
-      }
-
-      function activarBotones() {
-        document.querySelectorAll('.agregar-carrito').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const nombre = btn.dataset.nombre;
-            const precio = parseInt(btn.dataset.precio);
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-            const existente = carrito.find(p => p.nombre === nombre);
-            if (existente) {
-              existente.cantidad += 1;
-            } else {
-              carrito.push({ nombre, precio, cantidad: 1 });
-            }
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-            mostrarNotificacion(`\"${nombre}\" se agregó al carrito`);
-          });
-        });
-      }
-
-      function mostrarNotificacion(texto) {
-        const noti = document.getElementById('notificacion');
-        noti.textContent = texto;
-        noti.classList.add('mostrar');
-        setTimeout(() => {
-          noti.classList.remove('mostrar');
-          setTimeout(() => noti.style.display = 'none', 300);
-        }, 2000);
-        noti.style.display = 'block';
-      }
-
-      // Inicial
-      mostrarProductos(productos);
-    </script>
-
-    <!-- Notificación -->
+    <script src="./scripts/productos.js" defer></script>
     <div id="notificacion" style="display: none;"></div>
   </body>
 </html>
