@@ -1,0 +1,176 @@
+.hamburguesa {
+  display: none;
+}
+
+/* Estilos base */
+body {
+  margin: 0 0;
+  font-family: sans-serif;
+}
+
+#notificacion {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #235099;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-weight: bold;
+  font-size: 16px;
+  z-index: 1000;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+#notificacion.mostrar {
+  display: block;
+  opacity: 1;
+}
+
+.nav_bar {
+  background-color: #173668;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.logo {
+  height: 50px;
+}
+
+.nav_links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav_links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.carrito-img {
+  height: 24px;
+}
+
+.banner {
+  background: #ccc;
+  text-align: center;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-content img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+}
+
+/* Categorías */
+.categoria {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.categoria h2 {
+  background-color: #173668;
+  color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* Carrusel */
+.carrusel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 10px;
+}
+
+.carrusel {
+  display: flex;
+  gap: 100px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+/* Tarjetas */
+.card {
+  flex: 0 0 auto;
+  width: clamp(150px, 25vw, 250px);
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+
+.card img {
+  width: 100px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #173668;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Flechas */
+.flecha {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  color: #173668;
+  z-index: 2;
+}
+
+/* Footer */
+footer {
+  background-color: #173668;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-contacto, .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-social img {
+  height: 20px;
+}
